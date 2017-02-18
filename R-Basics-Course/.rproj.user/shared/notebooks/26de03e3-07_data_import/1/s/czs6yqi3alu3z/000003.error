@@ -1,0 +1,1 @@
+{"frames":[{"character_number":0,"end_character_number":0,"end_line_number":0,"file":"","func":"readLines(\"data2.csv\")","line_number":0},{"character_number":0,"end_character_number":0,"end_line_number":0,"file":"","func":"file(con, \"r\")","line_number":0}],"message":"Error in file(con, \"r\") : cannot open the connection\n"}

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to R">
+  <meta name="author" content="Adam J Sullivan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/style.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/shield_image_large.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/shield_image.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introduction to R</h1>
+    <h2>The Data Analysis Workflow</h2>
+    <p>Adam J Sullivan<br/></p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-nd/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-nd.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="segue" id="slide-1" style="background:grey;">
+  <hgroup>
+    <h1>Workflow Basics</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The Data Analysis Workflow</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf1.png" style="height:175px">
+</center></p>
+
+<ul>
+<li>Concept from Hadley Wickham</li>
+<li>R works extremely well for this. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-3" style="background:grey;">
+  <hgroup>
+    <h1>Data Wrangling</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Wrangling</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf2.png" style="height:175px">
+</center></p>
+
+<ul>
+<li>This is the first step for any work in data analysis. </li>
+<li>We must first get our data, possibly from multiple sources. </li>
+<li>We then take it from the original format into one that is useful for us. </li>
+<li>Finally we clean the data. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Importing Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf3.png" style="height:175px">
+</center></p>
+
+<h3> Ways to Get Data into R </h3>
+
+<ul>
+<li class='csv,'>.txt. .xls, ....</li>
+<li>SPSS, SAS, Stata</li>
+<li>Web Scraping</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Importing Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf3.png" style="height:175px">
+</center></p>
+
+<h3> Ways to Get Data into R </h3>
+
+<ul>
+<li>Databases
+
+<ul>
+<li>MySQL</li>
+<li>Oracle</li>
+<li>PostgreSQL</li>
+<li>MongoDB</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Tidying Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf4.png" style="height:175px">
+</center></p>
+
+<h3> Ways to Tidy Data</h3>
+
+<ul>
+<li><code>tidyr</code> package</li>
+<li>Handles many data structures</li>
+<li>Natural Language Processing</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Transforming Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf5.png" style="height:175px">
+</center></p>
+
+<h3> Working with Data </h3>
+
+<ul>
+<li>R has multiple tools to manipulate and transform data.</li>
+<li>It can index multiple data types.</li>
+<li>It handles missing data extremely well. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-9" style="background:grey;">
+  <hgroup>
+    <h1>Data Exploration and Analysis</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Exploration and Analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf6.png" style="height:225px">
+</center></p>
+
+<ul>
+<li>R has many tools available to do all aspects of exploration and analysis. </li>
+<li>R has over 10000 packages and the number is growing exponentially.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Visualizing Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf8.png" style="height:225px">
+</center></p>
+
+<h3> Ways to Visualize Data.  </h3>
+
+<ul>
+<li>R has an easy to use base graphics package.</li>
+<li>It is easy to manipulate and change a graph in anyway. </li>
+<li><code>ggplot2</code> is an extensive Graphics package and language for graphics. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Modeling Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf9.png" style="height:225px">
+</center></p>
+
+<h3> Ways to Model Data </h3>
+
+<ul>
+<li>With over 10,000 packages, it is hard to find a method that R does not have a function for. </li>
+<li>It handles all traditional models like linear, logistic, log-linear, ...</li>
+<li>It can handle many advanced methods and algorithms. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Transforming Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf7.png" style="height:225px">
+</center></p>
+
+<h3> Transforming Data Again? </h3>
+
+<ul>
+<li>When visualizing and transforming data it is often needed to transform data again. </li>
+<li>R easily creates and manipulates variables. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Transforming Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf7.png" style="height:225px">
+</center></p>
+
+<h3> Transforming Data Again? </h3>
+
+<ul>
+<li>When visualizing and transforming data it is often needed to transform data again. </li>
+<li>R easily creates and manipulates variables. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-15" style="background:grey;">
+  <hgroup>
+    <h1>Data Collaboration and Publishing</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Collaboration and Publishing</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf10.png" style="height:225px">
+</center></p>
+
+<ul>
+<li>Data Collaboration and publishing are key to all fields. </li>
+<li><code>RStudio</code> provides many tools for this. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Communication</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf12.png" style="height:225px">
+</center></p>
+
+<ul>
+<li><code>RStudio</code> connects easily to:
+
+<ul>
+<li><a href="https://www.github.com/">Github</a></li>
+<li><a href="https://rpubs.com/">RPubs</a></li>
+<li><a href="https://www.rstudio.com/products/connect/">RStudio Connect</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="./assets/img/wf11.png" style="height:225px">
+</center></p>
+
+<ul>
+<li><code>shiny</code> provides an interactive data visualization and java script environment.</li>
+<li><code>plotly</code> allows for interactive graphics for webpages. </li>
+<li><code>RStudio</code> can make webpages, books, slides, and many other documents that can help relay data. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Workflow Basics'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The Data Analysis Workflow'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data Wrangling'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Data Wrangling'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Importing Data'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Importing Data'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Tidying Data'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Transforming Data'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Data Exploration and Analysis'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Data Exploration and Analysis'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Visualizing Data'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Modeling Data'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Transforming Data'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Transforming Data'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Data Collaboration and Publishing'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Data Collaboration and Publishing'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Data Communication'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Data Visualization'>
+         18
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/opencpu-0.5.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

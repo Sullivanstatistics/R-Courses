@@ -1,0 +1,222 @@
+---
+title       : Introduction to R
+subtitle    : Dataframes in R
+author      : Adam J Sullivan
+job         : 
+license     : by-nc-nd
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, quiz, bootstrap, interactive]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+logo        : shield_image.png
+biglogo     : shield_image_large.png
+knit        : slidify::knit2slides
+assets      : {assets: ../../assets}
+--- .segue bg:grey
+
+# DataFrames in R
+
+
+
+--- .class #id
+
+
+
+## Dataframe
+
+- With statistics we are most likely to use the data structure called a data frame. 
+- This is similar to a matrix in appearance however we can have multiple types of data in it like a list.
+- Each column must contain the same type of data or R will most likely default to character for that column. 
+- It is very important that you become proficient in working with data frames in order to fully understand data analysis.
+
+--- .class #id
+
+## Creating Data Frames
+We usually create a data frame with vectors. 
+
+```{r} 
+names <- c("Angela", "Shondra")
+ages <- c(27,36)
+insurance <- c(TRUE, T)
+patients <- data.frame(names, ages, insurance)
+patients
+```
+
+--- .class #id
+
+
+
+
+## Adding Rows or Columns
+
+- We may wish to add rows or columns to our data. 
+- We can do this with:
+  - ***rbind()*** 
+  - ***cbind()*** 
+
+--- .class #id
+
+## Adding Rows or Columns
+
+For example we can go back to our patient data and say we wish to add another patient we could just do the following
+```{r}
+l <- c(names="Liu Jie", age=45, insurance=TRUE)
+rbind(patients, l)
+```
+
+>- This warning serves as a reminder to always know what your data type is.
+>- R has read our data in as a factor when we want it as a character. 
+
+--- .class #id
+
+## Adding Rows or Columns
+
+```{r}
+patients$names <- as.character(patients$names)
+patients <- rbind(patients, l)
+patients
+```
+
+--- .class #id
+
+## Adding Rows or Columns
+
+Finally if we decided to then place another column of data in we could
+```{r}
+
+# Next appointments
+next.appt <- c("09/23/2016", "04/14/2016", "02/25/2016")
+
+#Lets R know these are dates
+next.appt <- as.Date(next.appt, "%m/%d/%Y")
+next.appt
+```
+
+--- .class #id
+
+```{r}
+patients <- cbind(patients, next.appt)
+patients
+```
+
+--- .class #id
+
+## Accessing Data Frames
+
+In order to best consider accessing of data frames we will use some built in data from R. 
+
+```{r}
+library(datasets)
+titanic <- data.frame(Titanic)
+```
+
+--- .class #id
+
+## Variables Included in Titanic
+
+```{r}
+colnames(titanic)
+```
+
+--- .class #id
+
+## Preview Into Data
+
+
+```{r} 
+titanic[1:2,]
+
+head(titanic)
+```
+
+
+--- .class #id
+
+## Indexing 
+
+- Indexing is the same as that for matrices. 
+- ***head()*** function allows us to access the first rows of the data frame. 
+- We can also access data by using both column and row information
+
+--- .class #id
+
+## Indexing
+
+```{r}
+# accessing age information
+titanic[,3]
+
+#accessing age information using column name
+titanic[, "Age"]
+
+```
+
+
+--- .class #id
+
+## Indexing and Naming
+
+- This means we can access data with a column or row number
+- More importantly we can use the name. 
+- For large data frames accessing by a name is key.
+
+--- .class #id
+
+
+## Further Indexing 
+
+Say we want to know information about a particular class
+```{r}
+titanic["1st", ]
+
+```
+
+--- .class #id
+
+## Further Indexing
+
+We could also ask for information by using the factors that we have as well
+
+```{r}
+first.class.freq <- titanic[titanic$Class=="1st", "Freq"]
+first.class.freq
+
+
+male.freq <- titanic[titanic$Sex=="Male", "Freq"]
+male.freq
+```
+
+--- .class #id
+
+## Our New Variables
+
+```{r}
+sum(first.class.freq)
+sum(male.freq)
+```
+
+--- .class #id
+
+## Adding New Variables 
+
+- Suppose we not only want to know the frequency of survival but the proportion 
+- We can ask R to calculate this and add it to our data. 
+
+```{r}
+titanic$surv_p <- titanic$Freq/sum(titanic$Freq)
+head(titanic,4)
+```
+
+--- .class #id
+
+## Replacing Values 
+
+- Perhaps we were not pleased the decimal places and want to have this as a percentage. 
+- We can overwrite the values and change this. 
+
+```{r}
+titanic$surv_p <- titanic$surv_p*100
+head(titanic,4)
+```
+

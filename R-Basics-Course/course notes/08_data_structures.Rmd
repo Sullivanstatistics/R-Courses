@@ -1,0 +1,161 @@
+---
+title       : Introduction to R
+subtitle    : Data Objects in R
+author      : Adam J Sullivan
+job         : 
+license     : by-nc-nd
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, quiz, bootstrap, interactive]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+logo        : shield_image.png
+biglogo     : shield_image_large.png
+knit        : slidify::knit2slides
+assets      : {assets: ../../assets}
+---  .segue bg:grey
+
+# Data Objects in R
+
+--- .class #id
+
+## Now That we Can Import Data
+
+
+
+We begin with a look at different kinds of data
+
+- **Booleans**: Direct binary values: `TRUE` or `FALSE` in R. 
+- **Integers**: Whole numbers or number that can be written without fractional component, represented by a fixed-length block of bits.
+
+--- .class #id
+
+## Data Objects
+
+- **Characters**: fixed length block of bits with special coding.
+- **Strings**: Sequence of characters.
+- **Floating Point Numbers**: a fraction times an exponent, like $1.34x10^7$, however in R you would see `1.34e7`. 
+- **Missing**: `Na`, `NaN`, $\ldots$
+
+--- .class #id
+
+## Finding Type of Data
+
+With types of data, R, has a built in way to help one determine the type that a certain piece of data is stored as. these consist of the following functions:
+
+
+- **typeof()** this function returns the type
+- **is.`typ`()** functions return Booleans for whether the argument is of the type ***typ***
+- **as.`typ`()** functions try to change the argument to type ***typ***
+
+--- .class #id
+
+## Examples of Type
+
+```{r}
+typeof(7)
+
+is.numeric(7)
+```
+
+--- .class #id
+
+
+## Examples of Type
+
+```{R}
+
+is.na(7)
+
+is.na(7/0)
+```
+
+--- .class #id
+
+## Examples of Type
+
+```{R}
+is.na(0/0)
+
+7/0
+
+0/0
+```
+
+--- .class #id
+
+
+## Examples of Type
+
+```{R}
+is.character(7)
+
+is.character("7")
+```
+
+--- .class #id
+
+## Coercing Data Types
+
+```{R}
+as.character(5/6)
+
+as.numeric(as.character(5/6))
+```
+
+--- .class #id
+
+## Equality of Data
+
+```{R}
+6*as.numeric(as.character(5/6))
+
+5/6 == as.numeric(as.character(5/6))
+```
+
+--- .class #id
+
+## What Happened?
+
+>- What we can see happening here is a problem in the precision of what R has stored for a number. 
+>- This can also occur when performing arithmetic operations on values as well.
+
+--- .class #id
+
+## A Closer Look
+
+```{r}
+5/6 - as.numeric(as.character(5/6))
+```
+
+
+
+--- .class #id
+
+## Further Tries at Equality
+
+```{r}
+
+0.45 == 3*0.15
+
+0.45-3*0.15
+
+0.4 - 0.1 == 0.5 - 0.2
+```
+
+--- .class #id
+
+## `all.equal()` Function
+
+When comparing numbers that we have performed operations on it is better to use the `all.equal()` function.
+
+--- .class #id
+
+## Example
+
+```{R}
+all.equal(0.45, 3*0.15)
+
+all.equal(0.4-0.1, 0.5-0.2)
+
+```

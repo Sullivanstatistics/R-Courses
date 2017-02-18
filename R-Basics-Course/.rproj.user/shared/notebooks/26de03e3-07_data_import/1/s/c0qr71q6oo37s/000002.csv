@@ -1,0 +1,7 @@
+"0","data <- read.table(header=TRUE, text='"
+"0"," subject sex size"
+"0","       1   M    7"
+"0","       2   F    NA"
+"0","       3   F    9"
+"0","       4   M   11"
+"0"," ')"

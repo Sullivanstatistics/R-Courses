@@ -1,0 +1,4 @@
+"0","readLines(""data2.csv"")"
+"2","cannot open file 'data2.csv': No such file or directory"
+"2","Error in file(con, ""r"") : cannot open the connection
+"

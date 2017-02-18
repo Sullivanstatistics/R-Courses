@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to R">
+  <meta name="author" content="Adam J Sullivan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/style.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/shield_image_large.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/shield_image.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introduction to R</h1>
+    <h2>Vectors in R</h2>
+    <p>Adam J Sullivan<br/></p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-nd/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-nd.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="segue" id="slide-1" style="background:grey;">
+  <hgroup>
+    <h1>Vectors in R</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>What is a Vector?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The fundamental data type in R is the vector. </li>
+<li>A vector is a sequence of data elements of the same type. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Creating Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>What we have used here is the concatenation operator which takes the arguments and places them in a vector in the order in which they were entered. </p>
+
+<pre><code class="r"> x &lt;- c(1,5,2, 6)
+ x
+</code></pre>
+
+<pre><code>## [1] 1 5 2 6
+</code></pre>
+
+<pre><code class="r"> is.vector(x)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Vector Arithmetic</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We can do arithmetic with vectors in a similar manner as we have with integers. </li>
+<li>When we use operators we are doing something element by element or &quot;elementwise.&quot; </li>
+</ul>
+
+<pre><code class="r"> y &lt;- c(1,6,4,8)
+ x+y
+</code></pre>
+
+<pre><code>## [1]  2 11  6 14
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Elementwise</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>It is important to remember what happens when we consider an ``elementwise&quot; operation</p>
+
+<pre><code class="r"> x*y
+</code></pre>
+
+<pre><code>## [1]  1 30  8 48
+</code></pre>
+
+<pre><code class="r"> x/y
+</code></pre>
+
+<pre><code>## [1] 1.0000000 0.8333333 0.5000000 0.7500000
+</code></pre>
+
+<pre><code class="r">x %% y
+</code></pre>
+
+<pre><code>## [1] 0 5 2 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Recycling</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We do have to be careful when performing arithmetic operations on vectors. </li>
+<li>There is a concept called recycling and this happens when 2 vectors do not have the same length</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Recycling Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"> z&lt;- c(1,2 ,6 ,8, 9, 10)
+
+ x+z
+</code></pre>
+
+<pre><code>## Warning in x + z: longer object length is not a multiple of shorter object
+## length
+</code></pre>
+
+<pre><code>## [1]  2  7  8 14 10 15
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Recycling</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Intuition would make us think that we could not perform this operation when the length of both vectors are not the same. </li>
+<li>However what R does is it rewrites <code>x</code> such that we have <code>x &lt;- c(1 , 5, 2, 6 , 1, 5)</code>.</li>
+<li>This is called recycling, when R makes the shorter vector longer by repeating elements in the order they are listed in.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Recyling</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x+ z
+</code></pre>
+
+<pre><code>## Warning in x + z: longer object length is not a multiple of shorter object
+## length
+</code></pre>
+
+<pre><code>## [1]  2  7  8 14 10 15
+</code></pre>
+
+<pre><code class="r">c(1 , 5, 2, 6 , 1, 5) + z
+</code></pre>
+
+<pre><code>## [1]  2  7  8 14 10 15
+</code></pre>
+
+<p>--- .class #id</p>
+
+<h2>Functions on Vectors</h2>
+
+<ul>
+<li><p>There are various functions that we can run over a vector and as we continue on we will learn more about these functions.</p></li>
+<li><p>One of the simplest functions can help us with knowing information about Recycling that we encountered before. This is the <code>length()</code> function. </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Functions on Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">length(x)
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+<pre><code class="r">length(y)
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+<pre><code class="r">length(z)
+</code></pre>
+
+<pre><code>## [1] 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Functions on Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Then length vector is very important with the writing of functions which we will get to in a later unit.  </p></li>
+<li><p>We can use <strong><em>any()</em></strong> and <strong><em>all()</em></strong> in order to answer logical questions about elements </p></li>
+</ul>
+
+<p>--- .class #id</p>
+
+<h2>Functions on Vectors</h2>
+
+<pre><code class="r">any(x&gt;3)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">all(x&gt;3)
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+<p>--- .class #id</p>
+
+<h2>Built in Functions</h2>
+
+<p>There area various other functions that can be run on vectors some you have seen in other classes.</p>
+
+<ul>
+<li><strong><em>mean()</em></strong> finds the arithmetic mean of a vector. </li>
+<li><strong><em>median()</em></strong> finds the median of a vector.</li>
+<li><strong><em>sd()</em></strong> and <strong><em>var()</em></strong> finds the standard deviation and variance of a vector respectively.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Built in Functions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong><em>min()</em></strong> and <strong><em>max()</em></strong> finds the minimum and maximum of a vector respectively.</li>
+<li><strong><em>sort()</em></strong> returns a vector that is sorted. </li>
+<li><strong><em>summary()</em></strong> returns a 5 number summary of the numbers in a vector. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2><code>which()</code> Function</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Some functions help us work with the data more to return values in which we are interested in. </li>
+<li>For example, above we asked if any elements in vector <code>x</code> were greater than 3. </li>
+<li>The <code>which()</code> function will tell us the elements that are. </li>
+</ul>
+
+<pre><code class="r"> which(x&gt;3)
+</code></pre>
+
+<pre><code>## [1] 2 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Vector Indexing</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We can call specific elements of a vector by using the following:</p>
+
+<ul>
+<li><code>x[]</code> is a way to call up a specific element of a vector.</li>
+<li><code>x[1]</code> is the first element.</li>
+<li><code>x[3]</code> is the third element.</li>
+<li><code>x[-3]</code> is a vector with everything but the third element. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Working with Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"> #List elements to make sure we have what we need
+ ls()
+</code></pre>
+
+<pre><code>## [1] &quot;x&quot; &quot;y&quot; &quot;z&quot;
+</code></pre>
+
+<pre><code class="r"> x[3]
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<pre><code class="r"> x[-3]
+</code></pre>
+
+<pre><code>## [1] 1 5 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Replacing Values</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We have seen how to subtract an element from a vector but we can use the same information to place it back in. </li>
+<li>We start with the same vector <code>x</code> that we started with. </li>
+</ul>
+
+<pre><code class="r"> x
+</code></pre>
+
+<pre><code>## [1] 1 5 2 6
+</code></pre>
+
+<pre><code class="r"> x&lt;-x[-3]
+ x
+</code></pre>
+
+<pre><code>## [1] 1 5 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Insering Values</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We can then add the original element back in</p>
+
+<pre><code class="r"> x &lt;- c(x[1:2], 2, x[3])
+ x
+</code></pre>
+
+<pre><code>## [1] 1 5 2 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Indexing with Booleans</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Before we used <code>any(x &gt; 3)</code> and <code>which(x &gt; 3)</code>. </li>
+<li>Now we can see not only their position in the vector, but indexing allows us to return their values. </li>
+</ul>
+
+<pre><code class="r"> x[x &gt; 3]
+</code></pre>
+
+<pre><code>## [1] 5 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Creating Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>There are multiple ways we can create a vector but we must let R know what we are doing</p>
+
+<pre><code class="r"> y[1] &lt;- 3
+ y[2] &lt;- 15
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Creating Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Within R, we have not defined any <code>y</code> yet so it will not create a vector in this manner. There are multiple ways of creating vectors:</p>
+
+<pre><code class="r"> y1 &lt;- vector(length=2)
+ y1[1] &lt;- 3
+ y1[2] &lt;- 15
+
+ y1
+</code></pre>
+
+<pre><code>## [1]  3 15
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Creating Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"> y2 &lt;-  c(3,15)
+ y2
+</code></pre>
+
+<pre><code>## [1]  3 15
+</code></pre>
+
+<pre><code class="r"> y3 &lt;- seq(from=3, to=15, length=2)
+ y3
+</code></pre>
+
+<pre><code>## [1]  3 15
+</code></pre>
+
+<pre><code class="r"> y4 &lt;- seq(from=3, to=15, by=12)
+ y4
+</code></pre>
+
+<pre><code>## [1]  3 15
+</code></pre>
+
+<p>--- .class #id</p>
+
+<h2>Creating Vectors</h2>
+
+<p>Aside from these ways to create the specific vector of (3,15) we can create vectors a couple more ways as well</p>
+
+<pre><code class="r"> y5 &lt;- 3:10
+ y5
+</code></pre>
+
+<pre><code>## [1]  3  4  5  6  7  8  9 10
+</code></pre>
+
+<pre><code class="r"> y6 &lt;- rep(8,6)
+ y6
+</code></pre>
+
+<pre><code>## [1] 8 8 8 8 8 8
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Creating Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"> y7 &lt;- rep(c(1,2,3),3)
+ y7
+</code></pre>
+
+<pre><code>## [1] 1 2 3 1 2 3 1 2 3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Naming Vector Elements</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>With vectors it can be important to assign names to the values. </li>
+<li>Then when doing plots or considering maximum and minimums, instead of being given a numerical place within the vector we can be given a specific name of what that value represents. </li>
+<li>For example say that vector <code>x</code> represents the number of medications of 4 unique patients. We could then use the <strong><em>name()</em></strong> function to assign names to the values</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">x
+</code></pre>
+
+<pre><code>## [1] 1 5 2 6
+</code></pre>
+
+<pre><code class="r">names(x)
+</code></pre>
+
+<pre><code>## NULL
+</code></pre>
+
+<pre><code class="r">names(x) &lt;- c(&quot;Patient A&quot;, &quot;Patient B&quot;, &quot;Patient C&quot;, &quot;Patient D&quot;)
+x
+</code></pre>
+
+<pre><code>## Patient A Patient B Patient C Patient D 
+##         1         5         2         6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Vectors in R'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What is a Vector?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Creating Vectors'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Vector Arithmetic'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Elementwise'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Recycling'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Recycling Example'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Recycling'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Recyling'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Functions on Vectors'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Functions on Vectors'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Built in Functions'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='<code>which()</code> Function'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Vector Indexing'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Working with Vectors'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Replacing Values'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Insering Values'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Indexing with Booleans'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Creating Vectors'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Creating Vectors'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Creating Vectors'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Creating Vectors'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Naming Vector Elements'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='NA'>
+         24
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/opencpu-0.5.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

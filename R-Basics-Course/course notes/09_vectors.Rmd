@@ -1,0 +1,322 @@
+---
+title       : Introduction to R
+subtitle    : Vectors in R
+author      : Adam J Sullivan
+job         : 
+license     : by-nc-nd
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, quiz, bootstrap, interactive]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+logo        : shield_image.png
+biglogo     : shield_image_large.png
+knit        : slidify::knit2slides
+assets      : {assets: ../../assets}
+---  .segue bg:grey
+
+# Vectors in R
+
+
+--- .class #id
+
+## What is a Vector?
+
+- The fundamental data type in R is the vector. 
+- A vector is a sequence of data elements of the same type. 
+ 
+
+
+--- .class #id 
+
+## Creating Vectors
+ 
+What we have used here is the concatenation operator which takes the arguments and places them in a vector in the order in which they were entered. 
+
+```{r}
+ 
+ x <- c(1,5,2, 6)
+ x
+ 
+ is.vector(x)
+```
+ 
+
+--- .class #id
+
+##  Vector Arithmetic
+ 
+- We can do arithmetic with vectors in a similar manner as we have with integers. 
+- When we use operators we are doing something element by element or "elementwise." 
+ 
+```{r}
+ y <- c(1,6,4,8)
+ x+y
+```
+
+
+--- .class #id
+
+## Elementwise
+
+It is important to remember what happens when we consider an ``elementwise" operation
+ 
+```{r}
+ 
+ x*y
+ x/y
+x %% y
+```
+
+--- .class #id
+ 
+ 
+##  Recycling
+
+- We do have to be careful when performing arithmetic operations on vectors. 
+- There is a concept called recycling and this happens when 2 vectors do not have the same length
+
+--- .class #id
+
+## Recycling Example
+ 
+```{r}
+ 
+ z<- c(1,2 ,6 ,8, 9, 10)
+ 
+ x+z
+```
+
+--- .class #id
+
+##  Recycling
+
+- Intuition would make us think that we could not perform this operation when the length of both vectors are not the same. 
+- However what R does is it rewrites `x` such that we have `x <- c(1 , 5, 2, 6 , 1, 5)`.
+- This is called recycling, when R makes the shorter vector longer by repeating elements in the order they are listed in.
+
+--- .class #id
+
+## Recyling
+ 
+```{r}
+x+ z
+c(1 , 5, 2, 6 , 1, 5) + z
+```
+ 
+--- .class #id
+
+##  Functions on Vectors
+ 
+- There are various functions that we can run over a vector and as we continue on we will learn more about these functions.
+ 
+- One of the simplest functions can help us with knowing information about Recycling that we encountered before. This is the `length()` function. 
+
+--- .class #id
+
+## Functions on Vectors
+
+```{r}
+ 
+length(x)
+length(y)
+length(z)
+```
+
+--- .class #id
+
+## Functions on Vectors
+
+
+- Then length vector is very important with the writing of functions which we will get to in a later unit.  
+ 
+- We can use ***any()*** and ***all()*** in order to answer logical questions about elements 
+ 
+--- .class #id
+
+## Functions on Vectors
+
+```{r}
+ 
+any(x>3)
+all(x>3)
+ 
+```
+--- .class #id
+
+##  Built in Functions
+
+ There area various other functions that can be run on vectors some you have seen in other classes.
+ 
+- ***mean()*** finds the arithmetic mean of a vector. 
+- ***median()*** finds the median of a vector.
+- ***sd()*** and ***var()*** finds the standard deviation and variance of a vector respectively.
+
+--- .class #id
+
+##  Built in Functions
+
+- ***min()*** and ***max()*** finds the minimum and maximum of a vector respectively.
+- ***sort()*** returns a vector that is sorted. 
+- ***summary()*** returns a 5 number summary of the numbers in a vector. 
+
+--- .class #id
+
+##  `which()` Function
+ 
+- Some functions help us work with the data more to return values in which we are interested in. 
+- For example, above we asked if any elements in vector `x` were greater than 3. 
+- The `which()` function will tell us the elements that are. 
+ 
+```{r}
+ which(x>3)
+```
+
+--- .class #id
+
+##  Vector Indexing
+ 
+We can call specific elements of a vector by using the following:
+ 
+
+- `x[]` is a way to call up a specific element of a vector.
+- `x[1]` is the first element.
+- `x[3]` is the third element.
+- `x[-3]` is a vector with everything but the third element. 
+
+--- .class #id
+ 
+##  Working with Vectors 
+ 
+```{r}
+ #List elements to make sure we have what we need
+ ls()
+ 
+ x[3]
+ 
+ x[-3]
+```
+
+--- .class #id
+
+## Replacing Values
+
+- We have seen how to subtract an element from a vector but we can use the same information to place it back in. 
+- We start with the same vector `x` that we started with. 
+ 
+```{r}
+ x
+ x<-x[-3]
+ x
+ 
+```
+
+--- .class #id
+
+## Insering Values
+
+ We can then add the original element back in
+ 
+```{r}
+ x <- c(x[1:2], 2, x[3])
+ x
+ 
+```
+
+--- .class #id
+
+##  Indexing with Booleans
+
+- Before we used `any(x > 3)` and `which(x > 3)`. 
+- Now we can see not only their position in the vector, but indexing allows us to return their values. 
+ 
+```{r}
+ x[x > 3]
+```
+
+--- .class #id
+
+##  Creating Vectors
+ 
+ There are multiple ways we can create a vector but we must let R know what we are doing
+ 
+```{r}
+ 
+ y[1] <- 3
+ y[2] <- 15
+ 
+```
+
+--- .class #id
+
+##  Creating Vectors
+ 
+ Within R, we have not defined any `y` yet so it will not create a vector in this manner. There are multiple ways of creating vectors:
+ 
+```{r}
+ 
+ y1 <- vector(length=2)
+ y1[1] <- 3
+ y1[2] <- 15
+ 
+ y1
+```
+
+--- .class #id
+
+## Creating Vectors
+
+```{R}
+ 
+ y2 <-  c(3,15)
+ y2
+ 
+ y3 <- seq(from=3, to=15, length=2)
+ y3
+ 
+ y4 <- seq(from=3, to=15, by=12)
+ y4
+```
+ 
+--- .class #id
+
+## Creating Vectors
+
+ Aside from these ways to create the specific vector of (3,15) we can create vectors a couple more ways as well
+ 
+```{r}
+ y5 <- 3:10
+ y5
+ 
+ y6 <- rep(8,6)
+ y6
+ 
+```
+
+--- .class #id
+
+## Creating Vectors
+
+```{R} 
+ y7 <- rep(c(1,2,3),3)
+ y7
+ 
+```
+
+--- .class #id
+
+##  Naming Vector Elements
+
+- With vectors it can be important to assign names to the values. 
+- Then when doing plots or considering maximum and minimums, instead of being given a numerical place within the vector we can be given a specific name of what that value represents. 
+- For example say that vector `x` represents the number of medications of 4 unique patients. We could then use the ***name()*** function to assign names to the values
+
+--- .class #id
+
+```{r}
+x
+names(x)
+
+names(x) <- c("Patient A", "Patient B", "Patient C", "Patient D")
+x
+```

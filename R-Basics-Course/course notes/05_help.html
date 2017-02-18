@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to R">
+  <meta name="author" content="Adam J Sullivan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/style.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/shield_image_large.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/shield_image.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introduction to R</h1>
+    <h2>Getting Help in R</h2>
+    <p>Adam J Sullivan<br/></p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-nd/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-nd.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="segue" id="slide-1" style="background:grey;">
+  <hgroup>
+    <h1>Getting Help in R</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>The <code>help()</code> Function</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>To get online help within an R session we use the <code>help()</code> function. </li>
+<li>For example if we want to create a sequence and know that we can use the function <code>seq()</code> but are unsure of the arguments</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Help Function Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"># help() function with seq as argument
+help(seq)
+
+# Shortcut for help() is ?
+?seq
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Further Help Funcion Use</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We can also get help on characters and words by placing them in quotations</p>
+
+<pre><code class="r">#Special characters &lt; (all of these display the same information)
+help(&quot;&lt;&quot;)
+help(&#39;&lt;&#39;)
+?&quot;&lt;&quot;
+?&#39;&lt;&#39;
+
+# Help for words (same use of quotations above work
+?&quot;for&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>The <code>example()</code> Function</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Many times we just need to see some examples rather than read the entire documentation of a function or command.</li>
+<li>In this situation we would use the <code>example()</code> function</li>
+</ul>
+
+<pre><code class="r">example(seq)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>The <code>example()</code> Function</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We can then see numerous examples that R has run for us. </li>
+<li>The benefit of this command comes when you are interested in seeing examples of graphics, where just seeing the command and not the final product may not be as intuitive for us</li>
+</ul>
+
+<pre><code class="r">#Example of Perspective Plots
+example(persp)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>The <code>help.search()</code> Function</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The other help items are great if you know what function you are looking for. Many times we do not know exactly what we are looking for and need to do a more comprehensive search to find a proper function. </p>
+
+<pre><code class="r">#Search for information about normal
+help.search(&quot;normal&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Internet Help</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Aside from these areas of help another method is to search the internet for further help. Here are some other resources:</p>
+
+<ul>
+<li><a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a></li>
+<li><a href="http://www.ats.ucla.edu/stat/r/">UCLA Statistical Computing Help Site</a></li>
+<li><a href="www.google.com">Google Search Site</a></li>
+<li><a href="www.github.com">Github</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Getting Help in R'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The <code>help()</code> Function'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Help Function Example'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Further Help Funcion Use'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='The <code>example()</code> Function'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='The <code>example()</code> Function'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='The <code>help.search()</code> Function'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Internet Help'>
+         8
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/opencpu-0.5.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

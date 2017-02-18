@@ -1,0 +1,9 @@
+"0","# Write to a file, suppress row names"
+"0","write.csv(data, ""data1.csv"", row.names=FALSE)"
+"0","# Same, except that instead of ""NA"", output blank cells"
+"0","write.csv(data, ""data1.csv"", row.names=FALSE, na="""")"
+"0","# Use tabs, suppress row names and column names"
+"0","write.table(data, ""data1.tab"", sep=""\t"", row.names=FALSE, col.names=FALSE)"
+"0","readLines(data1.csv)"
+"2","Error in readLines(data1.csv) : object 'data1.csv' not found
+"
